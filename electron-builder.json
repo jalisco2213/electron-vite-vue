@@ -1,0 +1,45 @@
+{
+  "$schema": "https://raw.githubusercontent.com/electron-userland/electron-builder/master/packages/app-builder-lib/scheme.json",
+  "appId": "YourAppID",
+  "asar": true,
+  "productName": "YourAppName",
+  "directories": {
+    "output": "release/${version}/${env.BUILD_FLAVOR}"
+  },
+  "files": [
+    "dist",
+    "dist-electron"
+  ],
+  "extraMetadata": {
+    "buildFlavor": "${env.BUILD_FLAVOR}"
+  },
+  "mac": {
+    "target": [
+      "dmg"
+    ],
+    "artifactName": "${productName}-${env.BUILD_FLAVOR}-Mac-${version}-Installer.${ext}"
+  },
+  "win": {
+    "target": [
+      {
+        "target": "nsis",
+        "arch": [
+          "x64"
+        ]
+      }
+    ],
+    "artifactName": "${productName}-${env.BUILD_FLAVOR}-Windows-${version}-Setup.${ext}"
+  },
+  "nsis": {
+    "oneClick": false,
+    "perMachine": false,
+    "allowToChangeInstallationDirectory": true,
+    "deleteAppDataOnUninstall": false
+  },
+  "linux": {
+    "target": [
+      "AppImage"
+    ],
+    "artifactName": "${productName}-${env.BUILD_FLAVOR}-Linux-${version}.${ext}"
+  }
+}

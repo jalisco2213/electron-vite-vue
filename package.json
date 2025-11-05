@@ -1,0 +1,48 @@
+{
+  "name": "electron-vue-vite",
+  "version": "1.0.0",
+  "main": "dist-electron/main/index.js",
+  "description": "Template vue3 + vite + electron",
+  "author": "jalisco2213",
+  "license": "MIT",
+  "private": true,
+  "keywords": [
+    "electron",
+    "rollup",
+    "vite",
+    "vue3",
+    "vue"
+  ],
+  "debug": {
+    "env": {
+      "VITE_DEV_SERVER_URL": "http://127.0.0.1:3344/"
+    }
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build:renderer": "vue-tsc --noEmit && vite build",
+    "build:dev": "cross-env BUILD_FLAVOR=dev electron-builder -c electron-builder.json",
+    "build:public": "cross-env BUILD_FLAVOR=public electron-builder -c electron-builder.json",
+    "build": "npm-run-all -s build:renderer build:dev build:public",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.4",
+    "@vue/compiler-sfc": "^3.5.22",
+    "cross-env": "^7.0.3",
+    "electron": "^29.1.1",
+    "electron-builder": "^24.13.3",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^5.9.3",
+    "vite": "^5.1.5",
+    "vite-plugin-electron": "^0.28.4",
+    "vite-plugin-electron-renderer": "^0.14.5",
+    "vue": "^3.5.22",
+    "vue-tsc": "^2.2.12"
+  },
+  "dependencies": {
+    "electron-progressbar": "^2.2.1",
+    "electron-updater": "^6.6.2"
+  }
+}
